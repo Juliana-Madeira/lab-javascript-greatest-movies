@@ -30,7 +30,7 @@ function scoresAverage(moviesArray) {
       movie.score = 0
     }
     return acc + movie.score}, 0 ) 
-  let average = parseFloat((sum/moviesArray.length).toFixed(2))      //decimals and 2 decimals place
+  let average = Number((sum/moviesArray.length).toFixed(2))      //decimals and 2 decimals place
   return average 
 }
 
