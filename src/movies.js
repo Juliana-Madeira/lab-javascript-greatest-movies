@@ -43,8 +43,29 @@ function dramaMoviesScore(moviesArray) {
 }
 
 // Iteration 5: Ordering by year - Order by year, ascending (in growing order)
-function orderByYear() {}
-
+function orderByYear(moviesArray) {
+  // let newMoviesArray = moviesArray.map(movie => movie)    
+  let newMoviesArray = [...moviesArray]
+  newMoviesArray.sort((a, b) => {                         
+        if(a.year > b.year){
+          return 1
+        }
+        if(b.year > a.year){
+          return -1
+        }
+      
+        if(a.title > b.title){
+          return 1
+        }
+        if(b.title > a.title){
+          return -1
+        }
+       return 0                               
+  })    
+    return newMoviesArray;                               
+ }}
+ 
+ 
 // Iteration 6: Alphabetic Order - Order by title and print the first 20 titles
 function orderAlphabetically() {}
 
