@@ -102,7 +102,51 @@ function getInMinutes(duration){
 }
 
 // BONUS - Iteration 8: Best yearly score average - Best yearly score average
-function bestYearAvg() {}
+function bestYearAvg(moviesArray) {
+  if(moviesArray.length == 0){
+    return null
+  }
+  //quero essa estrutura pra ver cada filme de que ano é, separar filmes por respectivo ano
+  // const moviesByYear = {
+  //   '2000': [filme1, filme2],
+  //   '2001': [filme3, filme4]
+  // }
+
+  //crio objeto vazio
+  const moviesByYear = {};                   //começa sendo esse objeto vazio, nao tenho e nao sei as informaçoes ainda
+
+
+  //crio chaves(years nesse caso) dentro do objeto com arrays vazios
+  moviesArray.forEach(movie => {                  //forEach nao tem return, nao precisa de return, map sim - dentro do objeto vazio moviesByYear
+    moviesByYear[movie.year] = [];
+  })
+  
+  //insiro nos arrays vazios acima, de cada ano, os filmes de cada ano (respectivos)
+  moviesArray.forEach(movie => {
+    moviesByYear[movie.year].push(movie)           //jogar cada filme no seu array vazio pra preencher com cada filme de cada ano
+  })
+  
+  //crio variavel para calcular medias
+  const scoresByYear = []
+  //example:
+  //const scoreByYear = {
+  //   '1994': 8.5,
+  //   '1955': 9.5
+  // }
+
+  //pegar medias de scores por cada ano
+  for (let year in moviesByYear){              //for in somente usado para objetos, pega a chave e for of em objeto pegará o valor
+    const yearScore = {
+      year: year,
+      score: scoresAverage(moviesByYear[year])
+    }
+    scoresByYear.push(yearScore);
+  }
+
+  scoresByYear.sort((a, b) => b.score - a.score)
+
+  return `The best year was ${scoresByYear[0].year} with an average score of ${scoresByYear[0].score}`
+}
 
 
 
